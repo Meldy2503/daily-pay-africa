@@ -81,14 +81,13 @@ export const InputElement = ({
       <Input
         fontSize={"1.6rem"}
         onChange={onChange}
-        borderRadius={borderRadius ?? "4rem"}
         as={as}
         name={name}
         w={w ?? "100%"}
         mt=".3rem"
         value={value}
         {...register}
-        focusBorderColor="brand.400"
+        focusBorderColor="brand.300"
         isDisabled={isDisabled}
         isRequired={isRequired}
         color={color}
@@ -123,13 +122,12 @@ export const PasswordInput = ({
         <Input
           fontSize={"1.6rem"}
           onChange={onChange}
-          borderRadius={"4rem"}
           w={"100%"}
           py="2.2rem"
           px="2rem"
           type={showPassword ? "text" : "password"}
           placeholder="********"
-          focusBorderColor="brand.400"
+          focusBorderColor="brand.300"
           border="1px solid rgba(0, 0, 0, 0.10)"
           {...register}
         />

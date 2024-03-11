@@ -4,12 +4,17 @@
 // import { Heading } from "@/app/utils/heading";
 // import { InputElement, PasswordInput } from "@/app/utils/input-element";
 // import { ErrorToast, SuccessToast } from "@/app/utils/toast";
-import { Box, Button, Flex, Grid, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading, Stack, Text } from "@chakra-ui/react";
 // import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { InputElement, PasswordInput } from "../../../components/input-field";
+import { Button } from "../../../components/button";
+import LogoIcon from "../../../assets/logo-icon.svg";
+// import LogoIcon from "../assets/images/logo-icon.svg";
+import Image from "next/image";
+
 // import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 // import { LoginSchema } from "./schema/auth";
 // import { UseLoginMutation } from "./services/auth";
@@ -17,85 +22,90 @@ import { InputElement, PasswordInput } from "../../../components/input-field";
 // import LogoLink from "./utils/iwia-logo-link";
 
 const Login = () => {
-//   const [loading, setLoading] = useState(false);
+  //   const [loading, setLoading] = useState(false);
 
-//   const { mutateAsync: login } = UseLoginMutation();
-//   const router = useRouter();
-//   const formHook = useForm<LoginProps>({
-//     resolver: yupResolver(LoginSchema),
-//     defaultValues: {
-//       email: "",
-//       password: "",
-//     },
-//   } as { resolver: Resolver<LoginProps> });
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = formHook;
+  //   const { mutateAsync: login } = UseLoginMutation();
+  //   const router = useRouter();
+  //   const formHook = useForm<LoginProps>({
+  //     resolver: yupResolver(LoginSchema),
+  //     defaultValues: {
+  //       email: "",
+  //       password: "",
+  //     },
+  //   } as { resolver: Resolver<LoginProps> });
+  //   const {
+  //     register,
+  //     handleSubmit,
+  //     formState: { errors },
+  //   } = formHook;
 
-//   const submit: SubmitHandler<LoginProps> = async (data: LoginProps) => {
-//     setLoading(true);
-//     const result = await login(data);
+  //   const submit: SubmitHandler<LoginProps> = async (data: LoginProps) => {
+  //     setLoading(true);
+  //     const result = await login(data);
 
-//     try {
-//       if (!result) {
-//         setLoading(false);
-//         return;
-//       }
-//       if (result.status === 200 || result.status === 201) {
-//         setLoading(false);
-//       }
-//       router.push("/pages/jobs");
-//       SuccessToast("Login Successful!");
+  //     try {
+  //       if (!result) {
+  //         setLoading(false);
+  //         return;
+  //       }
+  //       if (result.status === 200 || result.status === 201) {
+  //         setLoading(false);
+  //       }
+  //       router.push("/pages/jobs");
+  //       SuccessToast("Login Successful!");
 
-//       if (typeof sessionStorage !== "undefined") {
-//         sessionStorage.setItem("admin", result!.data?.accessToken);
-//       }
-//     } catch (error: any) {
-//       ErrorToast(
-//         error?.response?.message || "An error occurred trying to login"
-//       );
-//       throw new Error(error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
+  //       if (typeof sessionStorage !== "undefined") {
+  //         sessionStorage.setItem("admin", result!.data?.accessToken);
+  //       }
+  //     } catch (error: any) {
+  //       ErrorToast(
+  //         error?.response?.message || "An error occurred trying to login"
+  //       );
+  //       throw new Error(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
   return (
-    <Grid placeItems={"center"}>
-      <Stack maxW={"500px"} w={"90%"} py={"30px"} mt="2.5rem">
+    <Flex
+      justify={"center"}
+      align={"center"}
+      maxW={"1280px"}
+      mx="auto"
+      direction={"column"}
+      h="100vh"
+      bg="brand.100"
+    >
+      <Box
+        bg="brand.100"
+        w={{ base: "95%", md: "55rem" }}
+        py="5rem"
+        px={{ base: "2rem", sm: "5rem" }}
+        borderRadius={"3rem"}
+        boxShadow="2px 2px 18px rgba(0, 0, 0, 0.1)"
+      >
         <Flex
-          justify="center"
-          position={"sticky"}
-          top="10px"
-          w="100%"
-          bg="brand.600"
-          zIndex={"100"}
-          mb="2rem"
+          align={"center"}
+          justify={"center"}
+          direction={"column"}
+          gap="3rem"
         >
-            <Text>Logo</Text>
+          <Image src={LogoIcon} height={150} width={150} alt="daily pay logo" />
+          <Heading textAlign="center" variant="h5" fontWeight="700" mb="3rem">
+            Login to your Account
+          </Heading>
         </Flex>
 
-        <Heading
-          textAlign="center"
-          variant="h5"
-          fontWeight="700"
-          mb="3rem"
-          mt="3rem"
-        >
-          Login to your Account
-        </Heading>
-
-        <form >
-        {/* <form onSubmit={handleSubmit(submit)}> */}
+        <form>
+          {/* <form onSubmit={handleSubmit(submit)}> */}
           <Flex flexDir="column" gap={10}>
             <InputElement
               label="Email"
               type="email"
               placeholder="admin@gmail.com"
-            //   register={register("email")}
-            //   errorMessage={errors.email?.message}
+              //   register={register("email")}
+              //   errorMessage={errors.email?.message}
             />
             <PasswordInput
             //   register={register("password")}
@@ -106,25 +116,21 @@ const Login = () => {
             textAlign={"right"}
             fontWeight={"500"}
             fontSize="1.6rem"
-            mt=".5rem"
-            mb="3rem"
-            color={"brand.150"}
+            mt=".6rem"
+            mb="5rem"
+            color={"brand.300"}
           >
-            <Link
-              href="/pages/auth/password-reset-link"
-              style={{ borderBottom: "1.5px solid #9fbe31" }}
-            >
-              {" "}
-              Forgot Password?
-            </Link>
+            <Link href=""> Forgot Password?</Link>
           </Box>
-          <Button w="100%" type="submit" as="button">
-          {/* <Button w="100%" type="submit" as={"button"} loading={loading}> */}
-            Login
-          </Button>
+          <Flex align={"center"} justify={"center"}>
+            <Button w="100%" type="submit" as="button">
+              {/* <Button w="100%" type="submit" as={"button"} loading={loading}> */}
+              Login
+            </Button>
+          </Flex>
         </form>
-      </Stack>
-    </Grid>
+      </Box>
+    </Flex>
   );
 };
 
