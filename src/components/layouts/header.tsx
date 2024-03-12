@@ -31,9 +31,9 @@ export const Header = () => {
   const style = { width: "100%", padding: " .7rem 2rem" };
 
   return (
-    <Menu>
+    <Menu >
       <MenuButton>
-        <HStack>
+        <HStack spacing={8}>
           <Avatar src="" name="Admin" size={"md"} />
           <Icon as={FaAngleDown} boxSize={6} />
         </HStack>

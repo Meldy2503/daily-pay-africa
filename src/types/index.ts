@@ -2,9 +2,16 @@
 
 import { SingleValue } from 'chakra-react-select';
 import { NextPage } from 'next';
+import { AppProps } from 'next/app';
 import type { ReactElement, ReactNode } from 'react';
 
 type GetLayoutFunc = (page: ReactElement) => ReactElement;
+
+
+export type PageProps = {
+  Component: NextPageWithLayout;
+  pageProps: any;
+} & AppProps;
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: GetLayoutFunc;

@@ -92,7 +92,7 @@ const Login = () => {
           gap="3rem"
         >
           <Image src={LogoIcon} height={150} width={150} alt="daily pay logo" />
-          <Heading textAlign="center" variant="h5" fontWeight="700" mb="3rem">
+          <Heading textAlign="center" variant="h4" fontWeight="700" mb="3rem">
             Login to your Account
           </Heading>
         </Flex>

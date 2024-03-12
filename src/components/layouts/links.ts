@@ -11,6 +11,16 @@ export interface LinkProps {
 
   const Links: Array<LinkProps> = [
     {
+      label: "Dashboard",
+      icon: BsLaptop,
+      path: "/dashboard",
+    },
+    {
+      label: "Customers",
+      icon: BsLaptop,
+      path: "/dashboard/customers",
+    },
+    {
       label: "Agents",
       icon: BsLaptop,
       nestedLinks: [
@@ -23,11 +33,6 @@ export interface LinkProps {
           path: "/dashboard/agents/deposits",
         },
       ],
-    },
-    {
-      label: "Customers",
-      icon: BsLaptop,
-      path: "/dashboard/customers",
     },
     {
       label: "Users",
