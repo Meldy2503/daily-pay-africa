@@ -1,37 +1,31 @@
 'use client';
 
 import React from "react";
-import mapIcon1 from "../../assets/images/gold-chart.svg";
-import mapIcon2 from "../../assets/images/green-chart.svg";
-import mapIcon3 from "../../assets/images/pink-chart.svg";
 import Icon1 from "../../assets/images/pink-icon.svg";
 import Icon2 from "../../assets/images/gold-icon.svg";
 import Icon3 from "../../assets/images/green-icon.svg";
 import Card from "../card";
 import { Flex } from "@chakra-ui/react";
 
-const DashboardCard = () => {
+const AgentCards = () => {
   const data = [
       {
         title: "Total Agents",
-        subTitle: "Total no. of agents",
-        value: 550,
+        subTitle: "Total no. of Agents",
+        value: 5000,
         icon: Icon2,
-        map: mapIcon1,
       },
     {
-      title: "Total Customers",
-      subTitle: "Total no of customers",
-      value: 1150,
+      title: "Active Agents",
+      subTitle: "No. of active agents",
+      value: 150,
       icon: Icon3,
-      map: mapIcon2,
     },
     {
-      title: "Total Amount",
-      subTitle: "Total amount",
-      value: 350000,
+      title: "Suspended Agents",
+      subTitle: "No. of suspended agents",
+      value: 350,
       icon: Icon1,
-      map: mapIcon3,
     },
   ];
 
@@ -45,7 +39,6 @@ const DashboardCard = () => {
         return (
           <Card
             key={index}
-            map={items.map}
             icon={items.icon}
             value={items.value}
             title={items.title}
@@ -57,4 +50,4 @@ const DashboardCard = () => {
   );
 };
 
-export default DashboardCard;
+export default AgentCards;

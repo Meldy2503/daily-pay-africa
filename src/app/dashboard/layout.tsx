@@ -29,7 +29,7 @@ const MenuDrawer = ({ isOpen, onClose }: DrawerProps) => {
   return (
     <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={"md"}>
       <DrawerOverlay />
-      <DrawerContent bg="brand.350">
+      <DrawerContent>
         <Flex justify={"flex-end"} p="1rem">
           <Icon
             as={AiOutlineClose}
@@ -50,19 +50,18 @@ const Layout = ({ children }: LayoutProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex minH="100vh" pr={{ base: "unset" }}>
+    <Flex minH="100vh" pr={{ base: "unset" }} >
       <Box display={{ base: "none", lg: "flex" }}>
         <Sidebar />
       </Box>
       <Flex
-        bg="brand.400"
-        //  px={{ base: "1rem", sm: "2rem" }}
+        bg="typography.offWhite"
         direction="column"
         rowGap={"2rem"}
         flexDir="column"
         position={"absolute"}
         right="0"
-        left={{ base: "0", lg: "26rem" }}
+        left={{ base: "0", lg: "25rem" }}
         minH="100vh"
       >
         <Flex
@@ -71,18 +70,18 @@ const Layout = ({ children }: LayoutProps) => {
           position={"sticky"}
           top="0px"
           zIndex={"100"}
-          bg="brand.100"
+          bg="typography.white"
            py="1.5rem"
            px= "2rem"
           borderWidth={{ base: "0", lg: "1px" }}
-          borderColor={"brand.450"}
+          borderColor={"typography.mediumWhite"}
         >
           <Box display={{ base: "block", lg: "none" }}>
             <IconButton
               aria-label="Menu"
               icon={<MdMenu />}
               onClick={onOpen}
-              fontSize={"3rem"}
+              fontSize={"2.5rem"}
               variant={"ghost"}
             />
           </Box>

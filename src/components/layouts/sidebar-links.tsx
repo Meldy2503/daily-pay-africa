@@ -41,6 +41,7 @@ const SidebarLinks = ({
     paddingBottom: "1.2rem",
     cursor: "pointer",
   };
+  
   return (
     <Stack spacing={4}>
       {path ? (
@@ -56,15 +57,15 @@ const SidebarLinks = ({
             pl="1rem"
             bg={
               currentRoute === path || currentRoute.includes(label)
-                ? "brand.550"
+                ? "typography.lighterGreen"
                 : "none"
             }
             color={
               currentRoute === path || currentRoute.includes(label)
-                ? "brand.250"
+                ? "typography.darkGreen"
                 : "none"
             }
-            _hover={{ background: "brand.550", color: "brand.250" }}
+            _hover={{ background: "typography.lighterGreen", color: "typography.darkGreen" }}
           >
             <Flex gap="1rem" justify="center" align="center">
               <Icon as={IconComponent} h="1.3rem" />
@@ -78,7 +79,7 @@ const SidebarLinks = ({
         //   with nested link
         <Flex
           align={"center"}
-          _hover={{ background: "brand.550", color: "brand.250" }}
+          _hover={{ background: "typography.lighterGreen", color: "typography.darkGreen" }}
           borderRadius=".6rem"
           cursor="pointer"
           gap="3rem"
@@ -117,21 +118,21 @@ const SidebarLinks = ({
                 <Box
                   borderRadius={".6rem"}
                   py="1.2rem"
-                  w="18.5rem"
+                  w="17.5rem"
                   pl={"1rem"}
                   bg={
                     currentRoute === link?.path ||
                     currentRoute.includes(link?.label)
-                      ? "brand.550"
+                      ? "typography.lighterGreen"
                       : "none"
                   }
                   color={
                     currentRoute === link?.path ||
                     currentRoute.includes(link?.label)
-                      ? "brand.250"
+                      ? "typography.darkGreen"
                       : "none"
                   }
-                  _hover={{ background: "brand.550", color: "brand.250" }}
+                  _hover={{ background: "typography.lighterGreen", color: "typography.darkGreen" }}
                 >
                   <Flex gap="1rem" align="center">
                     <Text variant="label">{link.label}</Text>

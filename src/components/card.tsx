@@ -14,28 +14,32 @@ interface CardProps {
 const Card = ({ icon, title, value, map, w, subTitle }: CardProps) => {
   return (
     <Box
-      bg={"brand.100"}
+    borderColor={"typography.mediumWhite"}
+      bg={"typography.white"}
       borderRadius={"1rem"}
       p={"2rem 2rem 0rem 2rem"}
-      w={w ?? {base: "100%", md: "47%", lg: '32%' }}
-      borderWidth={{ base: "0", lg: "1px" }}
-      borderColor={"brand.450"}
-      shadow={'sm'}
+      w={w ?? { base: "100%", sm: "46%", xl: "31.5%" }}
+      borderWidth={{ base: "0", lg: "1.5px" }}
+      shadow={"sm"}
     >
-      <Flex gap={{base: '2rem', sm: '3rem'}} mb='2rem' color='brand.500' align={'flex-start'}>
-      <Image src={icon} alt='map icon' width={50}  height={50}/>
-      <Box>
+      <Flex
+        gap={{ base: "2rem", md: "3rem" }}
+        mb="2rem"
+        color={"typography.gray"}
 
-        <Text >
-          {title}
-        </Text>
-      <Text fontWeight={800} fontSize={'3rem'} color='brand.150'>{value}</Text>
-        <Text fontSize={'1.3rem'}>
-          {subTitle}
-        </Text>
-      </Box>
+        align={map ? "flex-start" : 'center'}
+      >
+        <Image src={icon} alt="map icon" width={50} height={50} />
+        <Flex direction='column' gap={map ? '0' : '.5rem'}>
+          <Text>{title}</Text>
+          <Text fontWeight={800} fontSize={"3rem"}      color={"typography.black"}
+>
+            {value}
+          </Text>
+          <Text fontSize={"1.3rem"}>{subTitle}</Text>
+        </Flex>
       </Flex>
-      <Image src={map} alt='map icon'  width={800}  height={100}/>
+      {map && <Image src={map} alt="map icon" width={800} height={100} />}{" "}
     </Box>
   );
 };

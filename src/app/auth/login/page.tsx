@@ -9,11 +9,10 @@ import { Box, Flex, Grid, Heading, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { InputElement, PasswordInput } from "../../../components/input-field";
 import { Button } from "../../../components/button";
-import LogoIcon from "../../../assets/logo-icon.svg";
-// import LogoIcon from "../assets/images/logo-icon.svg";
+import LogoIcon from "../../../assets/images/logo-icon.svg";
 import Image from "next/image";
+import InputField from "@/components/input-field";
 
 // import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 // import { LoginSchema } from "./schema/auth";
@@ -71,14 +70,16 @@ const Login = () => {
     <Flex
       justify={"center"}
       align={"center"}
-      maxW={"1280px"}
       mx="auto"
       direction={"column"}
       h="100vh"
-      bg="brand.100"
+      bg={"typography.offWhite"}
+
     >
       <Box
-        bg="brand.100"
+        bg={"typography.white"}
+
+        
         w={{ base: "95%", md: "55rem" }}
         py="5rem"
         px={{ base: "2rem", sm: "5rem" }}
@@ -100,16 +101,20 @@ const Login = () => {
         <form>
           {/* <form onSubmit={handleSubmit(submit)}> */}
           <Flex flexDir="column" gap={10}>
-            <InputElement
+            <InputField
               label="Email"
               type="email"
               placeholder="admin@gmail.com"
               //   register={register("email")}
               //   errorMessage={errors.email?.message}
             />
-            <PasswordInput
-            //   register={register("password")}
-            //   errorMessage={errors.password?.message}
+            <InputField
+              isPassword
+              label="Password"
+              placeholder="******"
+
+              //   register={register("password")}
+              //   errorMessage={errors.password?.message}
             />
           </Flex>
           <Box
@@ -117,9 +122,10 @@ const Login = () => {
             fontWeight={"500"}
             fontSize="1.6rem"
             mt=".6rem"
-            mb="5rem"
-            color={"brand.300"}
-          >
+            mb="3rem"
+            color={"typography.lightGreen"}
+
+           >
             <Link href=""> Forgot Password?</Link>
           </Box>
           <Flex align={"center"} justify={"center"}>

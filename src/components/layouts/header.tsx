@@ -62,7 +62,7 @@ export const Header = () => {
           fontSize={"1.7rem"}
           fontWeight={"500"}
           py="1rem"
-          color="brand.150"
+          color="typography.black"
         >
           <Flex align={"center"} justify={"center"} mx="auto">
             Sign out

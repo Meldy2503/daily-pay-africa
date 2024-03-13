@@ -10,16 +10,21 @@ const poppins = Poppins({
 const theme = extendTheme({
   colors: {
     brand: {
-      100: "#ffffff",
-      150: "#000000",
-      200: "#072A36",
-      250: "#05740c",
-      300: "#0aa515",
-      350: "#10dc6c",
-      400: "#fbfbfb",
-      450: "#f3f2f2",
-      500: "#8D8D8D",
-      550: "#DFF3D9",
+      500: "#05740c",
+    },
+    typography: {
+      black: "#000000",
+      gray: "#8D8D8D",
+      white: "#ffffff",
+      offWhite: "#f8f8f8",
+      mediumWhite: "#f3f2f2",
+      darkGreen: "#072A36",
+      green: "#05740c",
+      lightGreen: "#0aa515",
+      mediumGreen: "#10dc6c",
+      lighterGreen: "#DFF3D9",
+      red: "#aa1e38",
+      lightRed: "#F5C9C9",
     },
   },
   fonts: {

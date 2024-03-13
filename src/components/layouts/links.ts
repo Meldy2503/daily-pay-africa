@@ -25,7 +25,7 @@ export interface LinkProps {
       icon: BsLaptop,
       nestedLinks: [
         {
-          label: "Agents",
+          label: "Summary",
           path: "/dashboard/agents",
         },
         {

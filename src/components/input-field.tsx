@@ -1,48 +1,32 @@
-import React, {useState } from "react";
-import { FiEye, FiUpload } from "react-icons/fi";
+import React, { useState } from "react";
+import { FiEye } from "react-icons/fi";
 import { RiEyeCloseLine } from "react-icons/ri";
-
-import { AiOutlineClose } from "react-icons/ai";
+import { generalStyle } from "@/utils";
 import {
-  Avatar,
   Box,
-  Button,
-  Flex,
   FormControl,
-  FormHelperText,
   FormLabel,
-  HStack,
   Icon,
   Input,
   InputGroup,
   InputRightElement,
-  SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import { LuImagePlus } from "react-icons/lu";
-import { UseFormReturn } from "react-hook-form";
+import { Controller } from "react-hook-form";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 interface InputProps {
   name?: string;
   value?: any;
-  title?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangeSelect?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  onChangeTextarea?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   placeholder?: string;
   index?: any;
-  onClick?: () => void;
   type?: string;
   label?: string;
+  id?: string;
   icon?: any;
-  OptionValue1?: string;
-  OptionValue2?: string;
-  OptionValue3?: string;
-  OptionValue4?: string;
-  OptionLabel1?: string;
-  OptionLabel2?: string;
-  OptionLabel3?: string;
-  OptionLabel4?: string;
+  control?: any;
   as?: any;
   w?: any;
   color?: string;
@@ -50,99 +34,120 @@ interface InputProps {
   isDisabled?: boolean;
   borderRadius?: string;
   isRequired?: boolean;
+  defaultValue?: string;
   register?: any;
   fontWeight?: string;
+  isDate?: boolean;
+  isPassword?: boolean;
+  isPhone?: boolean;
+  maxDate?: any;
   errorMessage?: any;
   helperText?: string;
 }
-export const InputElement = ({
+
+const InputField = ({
   type,
   value,
   onChange,
   placeholder,
   label,
   icon,
-  color,
   as,
   name,
   isDisabled,
-  register,
-  borderRadius,
   isRequired,
-  errorMessage,
   fontWeight,
-  w,
-}: InputProps) => {
-  return (
-    <FormControl fontSize={"1.6rem"}>
-      <FormLabel fontWeight={fontWeight ?? "500"} fontSize={"1.6rem"}>
-        {label} {icon}
-      </FormLabel>
-      <Input
-        fontSize={"1.6rem"}
-        onChange={onChange}
-        as={as}
-        name={name}
-        w={w ?? "100%"}
-        mt=".3rem"
-        value={value}
-        {...register}
-        focusBorderColor="brand.300"
-        isDisabled={isDisabled}
-        isRequired={isRequired}
-        color={color}
-        py="2.2rem"
-        px="2rem"
-        type={type ?? "text"}
-        placeholder={placeholder}
-        border="1px solid rgba(0, 0, 0, 0.10)"
-      />
-      <Text color="red" fontSize="1.5rem" mt=".5rem">
-        {" "}
-        {errorMessage}
-      </Text>
-    </FormControl>
-  );
-};
-
-export const PasswordInput = ({
   register,
   errorMessage,
-  onChange,
-  label,
+  defaultValue,
+  control,
+  id,
+  isPassword,
+  isPhone,
+  isDate,
+  maxDate,
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClick = () => setShowPassword(!showPassword);
+
   return (
     <FormControl fontSize={"1.6rem"}>
-      <FormLabel fontWeight="500" fontSize={"1.6rem"}>
-        {label ?? "Password"}
+      <FormLabel fontWeight={fontWeight ?? "500"} fontSize={"1.5rem"}>
+        {label} {icon}
       </FormLabel>
-      <InputGroup size="md">
-        <Input
-          fontSize={"1.6rem"}
-          onChange={onChange}
-          w={"100%"}
-          py="2.2rem"
-          px="2rem"
-          type={showPassword ? "text" : "password"}
-          placeholder="********"
-          focusBorderColor="brand.300"
-          border="1px solid rgba(0, 0, 0, 0.10)"
-          {...register}
+      {isPhone ? (
+        <Controller
+          name={id ? id : ""}
+          control={control}
+          render={({
+            field: { onChange: onPhoneChange, value: phoneValue },
+          }) => (
+            <PhoneInput
+              id={id}
+              onChange={onPhoneChange}
+              value={phoneValue}
+              defaultValue={defaultValue}
+              isDisabled={isDisabled}
+              isRequired={isRequired}
+              defaultCountry="NG"
+              placeholder="0803-754-7855"
+              focusBorderColor="typography.lightGreen"
+              {...register}
+              style={{ ...generalStyle }}
+            />
+          )}
         />
+      ) : isPassword ? (
+        <InputGroup size="md">
+          <Input
+            onChange={onChange}
+            defaultValue={defaultValue}
+            type={showPassword ? "text" : "password"}
+            placeholder="********"
+            focusBorderColor="typography.lightGreen"
+            {...register}
+            style={{ ...generalStyle }}
+          />
 
-        <InputRightElement mt="1.3rem" mr="1rem">
-          <Box onClick={handleClick} cursor="pointer">
-            {showPassword ? (
-              <Icon as={FiEye} boxSize={9} color="brand.900" />
-            ) : (
-              <Icon as={RiEyeCloseLine} boxSize={9} color="brand.900" />
-            )}
-          </Box>
-        </InputRightElement>
-      </InputGroup>
-      <Text color="red" fontSize="1.5rem" mt=".5rem">
+          <InputRightElement mt="1.3rem" mr="1rem">
+            <Box onClick={handleClick} cursor="pointer">
+              {showPassword ? (
+                <Icon as={FiEye} boxSize={9}  />
+              ) : (
+                <Icon as={RiEyeCloseLine} boxSize={9} />
+              )}
+            </Box>
+          </InputRightElement>
+        </InputGroup>
+      ) : isDate ? (
+        <Input
+          size="lg"
+          type="date"
+          max={maxDate}
+          {...register}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          onChange={onChange}
+          style={{ ...generalStyle }}
+        />
+      ) : (
+        <Input
+          onChange={onChange}
+          as={as}
+          name={name}
+          value={value}
+          {...register}
+          focusBorderColor="typography.lightGreen"
+          isDisabled={isDisabled}
+          isRequired={isRequired}
+          defaultValue={defaultValue}
+          type={type ?? "text"}
+          placeholder={placeholder}
+          style={{ ...generalStyle }}
+        />
+      )}
+
+      <Text color="red" fontSize="1.4rem" mt=".5rem">
         {" "}
         {errorMessage}
       </Text>
@@ -150,8 +155,4 @@ export const PasswordInput = ({
   );
 };
 
-
-
-
-
-
+export default InputField;

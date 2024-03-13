@@ -1,6 +1,5 @@
 "use client";
 
-// import LogoLink from "@/app/utils/iwia-logo-link";
 import { Box, Flex, HStack, Icon, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import toast from "react-hot-toast";
@@ -8,6 +7,8 @@ import { BsArrow90DegLeft } from "react-icons/bs";
 import Links from "./links";
 import SidebarLinks from "./sidebar-links";
 import { useRouter } from "next/navigation";
+import LogoIcon from "../../assets/images/logo-icon.svg";
+import Image from "next/image";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -20,13 +21,14 @@ const Sidebar = () => {
 
   return (
     <Box
-      w={{ base: "94%", lg: "26rem"}}
-      borderWidth={{ base: "0", lg: "1px" }}
-      borderColor={"brand.450"}
+      w={{ base: "94%", lg: "25rem" }}
+      bg="typography.white"
+      borderWidth={{ base: "0", lg: "1.5px" }}
+      borderColor={"typography.mediumWhite"}
+      shadow="md"
       pb="3rem"
-      px= "2rem"
+      px="2rem"
       h="100vh"
-      bg="brand.100"
       position={"fixed"}
       left="0px"
       bottom="0px"
@@ -39,18 +41,12 @@ const Sidebar = () => {
         mt="1.5rem"
         ml="1rem"
       >
-        <Text>Logo</Text>
+        <Image src={LogoIcon} height={100} width={100} alt="daily pay logo" />
       </Flex>
-      <Flex
-        gap="1rem"
-        direction="column"
-        mt="4rem"
-        fontSize={"1.7rem"}
-        color="brand.970"
-      >
+      <Flex gap="1rem" direction="column" mt="4rem" fontSize={"1.7rem"}>
         {Links.map((item) => (
           <SidebarLinks
-          key={item.label}
+            key={item.label}
             label={item.label}
             path={item.path}
             icon={item.icon}
@@ -60,22 +56,20 @@ const Sidebar = () => {
       </Flex>
 
       <HStack
-        align="center"
-        bg="brand.600"
-        p="1.2rem"
-        justify={"center"}
-        color="red"
-        shadow={"sm"}
         onClick={handleLogout}
-        borderRadius={"1rem"}
         cursor={"pointer"}
+        bg="typography.lighterGreen"
+        color="typography.darkGreen"
+        borderRadius={".5rem"}
+        py="1.1rem"
+        px="2rem"
         position="sticky"
         top="90%"
+        justify={"center"}
+        align="center"
       >
-        <Icon as={BsArrow90DegLeft} boxSize={6} mr=".5rem" />
-        <Text fontWeight={"700"} fontSize={"1.45rem"}>
-          LOG OUT
-        </Text>
+        <Icon as={BsArrow90DegLeft} boxSize={6} mr="1rem" />
+        <Text fontSize={"1.6rem"}>Sign out</Text>
       </HStack>
     </Box>
   );
