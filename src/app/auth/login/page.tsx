@@ -74,25 +74,29 @@ const Login = () => {
       direction={"column"}
       h="100vh"
       bg={"typography.offWhite"}
-
     >
       <Box
         bg={"typography.white"}
         w={{ base: "90%", md: "50rem" }}
         pt="3rem"
-      pb="5rem"
+        pb="5rem"
         px={{ base: "2rem", sm: "5rem" }}
         borderRadius={"3rem"}
-        boxShadow="2px 2px 18px rgba(0, 0, 0, 0.1)"
+        shadow={{ base: "none", sm: "md" }}
       >
         <Flex
           align={"center"}
           justify={"center"}
           direction={"column"}
           gap="3rem"
-         >
-          <Image src={LogoIcon} height={150} width={150} alt="daily pay logo" />
-          <Heading textAlign="center" fontSize={'2rem'} fontWeight="700" mb="3rem">
+        >
+          <Image src={LogoIcon} height={120} width={120} alt="daily pay logo" />
+          <Heading
+            textAlign="center"
+            fontSize={"2rem"}
+            fontWeight="700"
+            mb="3rem"
+          >
             Login to your Account
           </Heading>
         </Flex>
@@ -123,8 +127,7 @@ const Login = () => {
             mt=".6rem"
             mb="3rem"
             color={"typography.lightGreen"}
-
-           >
+          >
             <Link href=""> Forgot Password?</Link>
           </Box>
           <Flex align={"center"} justify={"center"}>
