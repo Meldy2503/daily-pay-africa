@@ -78,10 +78,9 @@ const Login = () => {
     >
       <Box
         bg={"typography.white"}
-
-        
-        w={{ base: "95%", md: "55rem" }}
-        py="5rem"
+        w={{ base: "90%", md: "50rem" }}
+        pt="3rem"
+      pb="5rem"
         px={{ base: "2rem", sm: "5rem" }}
         borderRadius={"3rem"}
         boxShadow="2px 2px 18px rgba(0, 0, 0, 0.1)"

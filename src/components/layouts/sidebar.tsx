@@ -10,11 +10,11 @@ import { useRouter } from "next/navigation";
 import LogoIcon from "../../assets/images/logo-icon.svg";
 import Image from "next/image";
 
-
 interface Props {
   onClose?: any;
+  mt?: string;
 }
-const Sidebar = ({onClose}: Props) => {
+const Sidebar = ({ onClose, mt }: Props) => {
   const router = useRouter();
 
   const handleLogout = () => {
@@ -26,8 +26,8 @@ const Sidebar = ({onClose}: Props) => {
   return (
     <Box
       w={{ base: "94%", lg: "25rem" }}
-       bg="typography.white"
-       borderWidth={{ base: "0", lg: "1.5px" }}
+      bg="typography.white"
+      borderWidth={{ base: "0", lg: "1.5px" }}
       borderColor={"typography.mediumWhite"}
       pb="3rem"
       px="2rem"
@@ -36,9 +36,7 @@ const Sidebar = ({onClose}: Props) => {
       left="0px"
       bottom="0px"
     >
-   
-      <Box zIndex={100} my='2rem'>
-
+      <Box zIndex={100} my="2rem" mt={mt}>
         <Image src={LogoIcon} height={100} width={120} alt="daily pay logo" />
       </Box>
       <Flex gap="1rem" direction="column" mt="4rem" fontSize={"1.7rem"}>

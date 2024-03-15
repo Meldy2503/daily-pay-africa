@@ -39,7 +39,7 @@ const MenuDrawer = ({ isOpen, onClose }: DrawerProps) => {
           />
         </Flex>
         <DrawerBody p="0">
-          <Sidebar onClose={onClose} />
+          <Sidebar onClose={onClose} mt="5rem"/>
         </DrawerBody>
       </DrawerContent>
     </Drawer>
@@ -52,7 +52,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <Flex minH="100vh" pr={{ base: "unset" }}>
       <Box display={{ base: "none", lg: "flex" }}>
-        <Sidebar />
+        <Sidebar mt='2rem'/>
       </Box>
       <Flex
         bg="typography.offWhite"
