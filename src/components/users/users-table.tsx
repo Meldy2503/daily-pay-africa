@@ -58,7 +58,7 @@ const UsersTable = () => {
       borderWidth="1.5px"
       borderColor={"typography.mediumWhite"}
       shadow={"sm"}
-      p="3rem 2rem 4rem 2rem"
+      p="1rem 2rem 4rem 2rem"
     >
    
 
@@ -68,8 +68,11 @@ const UsersTable = () => {
       <Flex
         justify={"space-between"}
         pb="4rem"
-        gap="3rem"
+        rowGap="2rem"
+        columnGap="5rem"
         align={{ base: "flex-start", sm: "center" }}
+        flexWrap={'wrap'}
+
       >
         <SearchBar />
         <CreateUserModal />

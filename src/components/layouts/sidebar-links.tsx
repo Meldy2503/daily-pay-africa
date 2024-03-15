@@ -15,7 +15,9 @@ import { LinkProps } from "./links";
 
 interface NavProps extends LinkProps {
   subLink?: boolean;
-  closeMobileSidebar?: () => void;
+  // closeMobileSidebar?: () => void;
+    onClose: () => void;
+  
 }
 
 const SidebarLinks = ({
@@ -23,7 +25,7 @@ const SidebarLinks = ({
   label,
   icon: IconComponent,
   nestedLinks,
-  closeMobileSidebar,
+  onClose
 }: NavProps) => {
   const { isOpen, onToggle } = useDisclosure();
   const currentRoute = usePathname();
@@ -50,8 +52,9 @@ const SidebarLinks = ({
           as={NextLink}
           href={path}
           _hover={{ textDecoration: "none" }}
-          onClick={closeMobileSidebar}
-        >
+          onClick={onClose}
+          // onClick={closeMobileSidebar}
+         >
           <Box
             style={{ ...linkStyle }}
             pl="1rem"
@@ -126,7 +129,7 @@ const SidebarLinks = ({
                 as={NextLink}
                 href={link.path}
                 _hover={{ textDecoration: "none" }}
-                onClick={closeMobileSidebar}
+                onClick={onClose}
               >
                 <Box
                   borderRadius={".6rem"}

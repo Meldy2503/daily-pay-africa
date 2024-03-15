@@ -10,7 +10,11 @@ import { useRouter } from "next/navigation";
 import LogoIcon from "../../assets/images/logo-icon.svg";
 import Image from "next/image";
 
-const Sidebar = () => {
+
+interface Props {
+  onClose?: any;
+}
+const Sidebar = ({onClose}: Props) => {
   const router = useRouter();
 
   const handleLogout = () => {
@@ -22,10 +26,9 @@ const Sidebar = () => {
   return (
     <Box
       w={{ base: "94%", lg: "25rem" }}
-      bg="typography.white"
-      borderWidth={{ base: "0", lg: "1.5px" }}
+       bg="typography.white"
+       borderWidth={{ base: "0", lg: "1.5px" }}
       borderColor={"typography.mediumWhite"}
-      shadow="md"
       pb="3rem"
       px="2rem"
       h="100vh"
@@ -33,16 +36,11 @@ const Sidebar = () => {
       left="0px"
       bottom="0px"
     >
-      <Flex
-        position={"sticky"}
-        top="10px"
-        w="100%"
-        zIndex={"100"}
-        mt="1.5rem"
-        ml="1rem"
-      >
-        <Image src={LogoIcon} height={100} width={100} alt="daily pay logo" />
-      </Flex>
+   
+      <Box zIndex={100} my='2rem'>
+
+        <Image src={LogoIcon} height={100} width={120} alt="daily pay logo" />
+      </Box>
       <Flex gap="1rem" direction="column" mt="4rem" fontSize={"1.7rem"}>
         {Links.map((item) => (
           <SidebarLinks
@@ -51,6 +49,7 @@ const Sidebar = () => {
             path={item.path}
             icon={item.icon}
             nestedLinks={item.nestedLinks}
+            onClose={onClose}
           />
         ))}
       </Flex>

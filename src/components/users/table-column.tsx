@@ -30,7 +30,7 @@ export const GetUserColumns = ({ onOpen }: Props) => {
     {
       name: " Email",
       selector: (row) => row.email,
-      cell: (row) => <Text>{row?.email}</Text>,
+      cell: (row) => <Text noOfLines={1}>{row?.email}</Text>,
       sortable: true,
     },
     {

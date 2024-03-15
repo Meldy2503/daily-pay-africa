@@ -58,12 +58,11 @@ const AgentTable = () => {
     <Box
       bg="typography.white"
       borderRadius="1rem"
-      mt="5rem"
-      mb="3rem"
+      my="3rem"
       borderWidth="1.5px"
       borderColor={"typography.mediumWhite"}
       shadow={"sm"}
-      p="3rem 2rem 4rem 2rem"
+      p="2rem 2rem 4rem 2rem"
     >
       <Text fontWeight={"600"} mb="4rem" mt='1rem'>
         Agents
@@ -71,8 +70,10 @@ const AgentTable = () => {
       <Flex
         justify={"space-between"}
         pb="4rem"
-        gap="3rem"
-        align={{ base: "flex-start", sm: "center" }}
+        rowGap="2rem"
+        columnGap={'5rem'}
+        align={{ base: "flex-start", md: "center" }}
+        flexWrap={'wrap'}
       >
         <SearchBar />
         <CreateAgentModal />

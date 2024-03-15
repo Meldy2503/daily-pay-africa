@@ -32,7 +32,7 @@ const AgentCards = () => {
   return (
     <Flex
       justify={{ base: "center", xl: "space-between" }}
-      gap="2rem"
+      gap="1rem"
       flexWrap={"wrap"}
     >
       {data.map((items, index) => {

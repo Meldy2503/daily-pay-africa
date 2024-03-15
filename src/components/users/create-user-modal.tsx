@@ -66,7 +66,6 @@ const AddUserModal = () => {
   return (
     <>
       <Button
-        w="15rem"
         type="button"
         as="button"
         className="btn"

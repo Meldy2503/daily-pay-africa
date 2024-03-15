@@ -1,6 +1,7 @@
 import { CreateAgentSchema } from "@/schema/agents";
 import { generalStyle } from "@/utils";
 import {
+  Box,
   Flex,
   FormControl,
   FormLabel,
@@ -65,15 +66,17 @@ const CreateAgentModal = () => {
   };
   return (
     <>
+    <Box>
+
       <Button
-        w= "19rem"
         type="button"
         as="button"
         className="btn"
         onClick={onOpen}
-      >
+        >
         Create Agent
       </Button>
+        </Box>
       <Modal isOpen={isOpen} onClose={onClose} isCentered size={"6xl"}>
         <ModalOverlay />
         <ModalContent px={{ base: "1rem", md: "2rem" }} py="3rem">

@@ -9,24 +9,25 @@ interface CardProps {
   value?: number;
   map?: any;
   w?: any;
+  pd?: any;
+  gap?: any;
 }
 
-const SummaryCard = ({ icon, title, value, map, w, subTitle }: CardProps) => {
+const SummaryCard = ({ icon, title, value, map, w,pd, gap, subTitle }: CardProps) => {
   return (
     <Box
     borderColor={"typography.mediumWhite"}
       bg={"typography.white"}
       borderRadius={"1rem"}
-      p={"2rem 2rem 0rem 2rem"}
-      w={w ?? { base: "100%", md: "46%", xl: "31.5%" }}
+      p={pd ?? "2rem 2rem 0rem 2rem"}
+      w={w ?? { base: "100%", md: "46%", xl: "32%" }}
       borderWidth= "1.5px" 
       shadow={"sm"}
     >
       <Flex
-        gap={{ base: "2rem", md: "3rem" }}
+        gap={ gap ?? { base: "2rem", md: "3rem" }}
         mb="2rem"
         color={"typography.gray"}
-
         align={map ? "flex-start" : 'center'}
       >
         <Image src={icon} alt="map icon" width={50} height={50} />

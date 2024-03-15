@@ -8,9 +8,12 @@ import Icon1 from "../../assets/images/pink-icon.svg";
 import Icon2 from "../../assets/images/gold-icon.svg";
 import Icon3 from "../../assets/images/green-icon.svg";
 import SummaryCard from "../cards/summary-card";
-import { Flex } from "@chakra-ui/react";
+import { Flex, useMediaQuery } from "@chakra-ui/react";
 
 const DashboardCard = () => {
+  const [isMobile] = useMediaQuery("(min-width: 600px)");
+  const [isTablet] = useMediaQuery("(min-width: 1300px)");
+
   const data = [
     {
       title: "Total Agents",
@@ -45,7 +48,7 @@ const DashboardCard = () => {
   return (
     <Flex
       justify={{ base: "center", xl: "space-between" }}
-      gap={{ base: "2rem", xl: "0" }}
+      gap={isTablet ? "0" : "2rem"}
       flexWrap={"wrap"}
     >
       {data.map((items, index) => {
@@ -57,7 +60,9 @@ const DashboardCard = () => {
             value={items.value}
             title={items.title}
             subTitle={items.subTitle}
-            w={{ base: "100%", sm: "46%", xl: "24%" }}
+            pd="2rem 1.5rem 0rem 1.5rem"
+            gap="2rem"
+            w={isTablet ? "24.5%" : isMobile ? "48%" : "100%"}
           />
         );
       })}

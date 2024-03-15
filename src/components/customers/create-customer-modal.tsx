@@ -66,7 +66,6 @@ const AddCustomerModal = () => {
   return (
     <>
       <Button
-        w= "22rem"
         type="button"
         as="button"
         className="btn"
