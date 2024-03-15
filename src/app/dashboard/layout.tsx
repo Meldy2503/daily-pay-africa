@@ -39,7 +39,7 @@ const MenuDrawer = ({ isOpen, onClose }: DrawerProps) => {
           />
         </Flex>
         <DrawerBody p="0">
-          <Sidebar onClose={onClose} mt='12rem'/>
+          <Sidebar onClose={onClose} mt='10rem'/>
         </DrawerBody>
       </DrawerContent>
     </Drawer>

@@ -39,7 +39,7 @@ const Sidebar = ({ onClose, mt }: Props) => {
       bottom="0px"
     >
       <Box zIndex={100} my="2rem" position="sticky" top='2rem'>
-        <Image src={LogoIcon} height={100} width={isMobile ? 150 : 100} alt="daily pay logo" />
+        <Image src={LogoIcon} height={100} width={isMobile ? 130 : 100} alt="daily pay logo" />
       </Box>
       <Flex gap="1rem" direction="column" mt={mt}>
         {Links.map((item) => (
