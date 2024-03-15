@@ -12,9 +12,10 @@ import Image from "next/image";
 
 interface Props {
   onClose?: any;
+  top?: string;
   mt?: string;
 }
-const Sidebar = ({ onClose, mt }: Props) => {
+const Sidebar = ({ onClose, top, mt }: Props) => {
   const router = useRouter();
 
   const handleLogout = () => {
@@ -36,10 +37,11 @@ const Sidebar = ({ onClose, mt }: Props) => {
       left="0px"
       bottom="0px"
     >
-      <Box zIndex={100} my="2rem" mt={mt}>
-        <Image src={LogoIcon} height={100} width={120} alt="daily pay logo" />
+      <Box zIndex={100} my="2rem"   position="sticky"
+        top={top}>
+        <Image src={LogoIcon} height={100} width={110} alt="daily pay logo" />
       </Box>
-      <Flex gap="1rem" direction="column" mt="4rem" fontSize={"1.7rem"}>
+      <Flex gap="1rem" direction="column" mt={mt} >
         {Links.map((item) => (
           <SidebarLinks
             key={item.label}
