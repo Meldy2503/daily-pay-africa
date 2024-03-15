@@ -18,7 +18,7 @@ import { Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { Button, ModalButton } from "../button";
 import InputField from "../input-field";
 
-const CreateAgentModal = () => {
+const AddUserModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const formHook = useForm<any>({
     // const formHook = useForm<EnrolleeType>({
@@ -27,7 +27,7 @@ const CreateAgentModal = () => {
       firstName: "",
       lastName: "",
       gender: "",
-      dateOfBirth: "",
+      role: "",
       email: "",
       phone: "",
     },
@@ -66,19 +66,19 @@ const CreateAgentModal = () => {
   return (
     <>
       <Button
-        w= "19rem"
+        w="15rem"
         type="button"
         as="button"
         className="btn"
         onClick={onOpen}
       >
-        Create Agent
+        Add User
       </Button>
       <Modal isOpen={isOpen} onClose={onClose} isCentered size={"6xl"}>
         <ModalOverlay />
         <ModalContent px={{ base: "1rem", md: "2rem" }} py="3rem">
           <Text fontWeight={700} px="1rem">
-            Add an Agent
+            Create a user
           </Text>
           <ModalCloseButton />
           <ModalBody>
@@ -145,14 +145,28 @@ const CreateAgentModal = () => {
                   gap={{ base: "1.5rem", md: "5rem" }}
                   direction={{ base: "column", md: "row" }}
                 >
-                  <InputField
+                  {/* <InputField
                     isRequired
                     isDate
-                    label="Date of Birth"
+                    label="Role"
                     placeholder="Select Date and Time"
                     register={register("dateOfBirth")}
                      maxDate={new Date().toISOString().split("T")[0]}
-                  />
+                  /> */}
+                  <FormControl w="100%">
+                    <FormLabel fontWeight={"500"} fontSize={"1.6rem"}>
+                      Role
+                    </FormLabel>
+                    <Select
+                      placeholder="Select role"
+                      focusBorderColor="typography.lightGreen"
+                      style={{ ...generalStyle }}
+                    >
+                      <option value="admin">Admin</option>
+                      <option value="manager">Manager</option>
+                      <option value="staff">Staff</option>
+                    </Select>
+                  </FormControl>
                   <FormControl w="100%">
                     <FormLabel fontWeight={"500"} fontSize={"1.6rem"}>
                       Gender
@@ -188,4 +202,4 @@ const CreateAgentModal = () => {
   );
 };
 
-export default CreateAgentModal;
+export default AddUserModal;

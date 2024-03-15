@@ -1,15 +1,13 @@
-'use client';
+"use client";
 
-
-import { TableColumn } from "react-data-table-component";
 import ActionsMenu from "@/components/action-menu";
-import { configOptions } from "@/services/config";
 import { Box, Text } from "@chakra-ui/react";
-import { NextRouter } from "next/router";
-import { Dispatch } from "react";
-import { AppTag } from "../tags";
+import { useRouter } from "next/navigation";
+import { TableColumn } from "react-data-table-component";
+import { AppTag } from "../../tags";
 
-export const getDashboardColumns = () => {
+export const GetAssignedCustomersColumns = () => {
+  const router = useRouter();
 
   const columns: TableColumn<any>[] = [
     {
@@ -19,17 +17,12 @@ export const getDashboardColumns = () => {
       cell: (row) => <Text>{row.date}</Text>,
     },
     {
-      name: "Account",
+      name: "Name",
       selector: (row) => row.name,
       sortable: true,
       cell: (row) => <Box>{row.name}</Box>,
     },
-    {
-      name: " Amount (₦)",
-      selector: (row) => row.amount,
-      cell: (row) => <Text>{row?.amount}</Text>,
-      sortable: true,
-    },
+
     {
       name: "Age",
       selector: (row) => row?.age,
@@ -53,14 +46,6 @@ export const getDashboardColumns = () => {
           actions={[
             {
               label: "View",
-              cta: () => {},
-            },
-            {
-              label: "Edit",
-              cta: () => {},
-            },
-            {
-              label: "Delete",
               cta: () => {},
             },
           ]}

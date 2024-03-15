@@ -25,9 +25,9 @@ const SearchBar = ({ name, value, register, onChange }: SearchProps) => {
         <Input
           fontSize={"1.6rem"}
           onChange={onChange}
-          w={"25rem"}
+          w={"28rem"}
           py="2.2rem"
-          px="2rem"
+          px="1rem"
           type="search"
           shadow={"sm"}
           placeholder="search..."
@@ -36,10 +36,8 @@ const SearchBar = ({ name, value, register, onChange }: SearchProps) => {
           borderRadius={'.5rem'}
           // {...register}
         />
+     
 
-        <InputLeftElement mt="1rem" mr="2rem" >
-          <Icon as={CiSearch} boxSize={8}  />
-        </InputLeftElement>
       </InputGroup>
     </FormControl>
   );

@@ -18,7 +18,7 @@ export enum Actions {
   Edit = "Edit",
   Download = "Download",
   Delete = "Delete",
-  Cancel = "Cancel",
+  Suspend = "Suspend",
   Approve = "Approve",
 }
 
@@ -45,8 +45,8 @@ const renderIcon = ({ label, cta, loading, disabled }: ActionType) => {
       ? "Delete"
       : label === Actions.Approve
       ? "Approve"
-      : label === Actions.Cancel
-      ? "Cancel"
+      : label === Actions.Suspend
+      ? "Suspend"
       : "";
 
   return (
@@ -98,7 +98,7 @@ const renderIcon = ({ label, cta, loading, disabled }: ActionType) => {
             />
           )}
 
-          {label === Actions.Cancel && (
+          {label === Actions.Suspend && (
             <CancelIcon
               width="1.7rem"
               onClick={!loading && !disabled ? cta : undefined}

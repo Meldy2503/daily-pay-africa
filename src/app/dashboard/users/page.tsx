@@ -1,10 +1,11 @@
-import { Box, Text } from "@chakra-ui/react";
 import React from "react";
+import UsersTable from "@/components/users/users-table";
+import { Box, Text } from "@chakra-ui/react";
 
 const Users = () => {
   return (
     <Box>
-      <Text>Users</Text>
+      <UsersTable />{" "}
     </Box>
   );
 };

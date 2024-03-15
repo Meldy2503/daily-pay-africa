@@ -1,16 +1,13 @@
-'use client';
+"use client";
 
-
-import { TableColumn } from "react-data-table-component";
 import ActionsMenu from "@/components/action-menu";
-import { configOptions } from "@/services/config";
-import { Box, Switch, Text } from "@chakra-ui/react";
-import { NextRouter } from "next/router";
-import { Dispatch } from "react";
-import { AppTag } from "../tags";
-import AgentConfirmationModal from "./confirmation-modal";
+import { Box, Text } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
+import { TableColumn } from "react-data-table-component";
+import { AppTag } from "../../tags";
 
-export const getAgentColumns = () => {
+export const GetContributionColumns = () => {
+  const router = useRouter();
 
   const columns: TableColumn<any>[] = [
     {
@@ -25,15 +22,10 @@ export const getAgentColumns = () => {
       sortable: true,
       cell: (row) => <Box>{row.name}</Box>,
     },
+
     {
-      name: " Amount (₦)",
-      selector: (row) => row.amount,
-      cell: (row) => <Text>{row?.amount}</Text>,
-      sortable: true,
-    },
-    {
-      name: "Age",
-      selector: (row) => row?.age,
+      name: "Amount",
+      selector: (row) => row?.amount,
       sortable: true,
     },
     {
@@ -50,28 +42,14 @@ export const getAgentColumns = () => {
     {
       name: "Actions",
       cell: (row) => (
-        <>
         <ActionsMenu
           actions={[
             {
               label: "View",
               cta: () => {},
             },
-            {
-              label: "Edit",
-              cta: () => {},
-            },
           ]}
         />
-        {/* <Switch
-        ml='1rem'
-        colorScheme="brand"
-        size={'md'}
-        onChange={() => {
-        }}
-      /> */}
-      <AgentConfirmationModal/>
-      </>
       ),
       center: true,
       maxWidth: "12rem",

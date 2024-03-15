@@ -1,10 +1,9 @@
 import { extendTheme } from "@chakra-ui/react";
 import { Poppins } from "next/font/google";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  display: "swap",
+const nextFont = Poppins({
   weight: ["400"],
+  subsets: ["devanagari"],
 });
 
 const theme = extendTheme({
@@ -15,6 +14,7 @@ const theme = extendTheme({
     typography: {
       black: "#000000",
       gray: "#8D8D8D",
+      lightGray: "#e0dede",
       white: "#ffffff",
       offWhite: "#f8f8f8",
       mediumWhite: "#f3f2f2",
@@ -23,13 +23,14 @@ const theme = extendTheme({
       lightGreen: "#0aa515",
       mediumGreen: "#10dc6c",
       lighterGreen: "#DFF3D9",
+      transGreen: "hsla(124, 89%, 34%, 0.7)",
       red: "#aa1e38",
       lightRed: "#F5C9C9",
     },
   },
   fonts: {
-    body: poppins.style.fontFamily,
-    heading: poppins.style.fontFamily,
+    body: nextFont.style.fontFamily,
+    heading: nextFont.style.fontFamily,
   },
 });
 

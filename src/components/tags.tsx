@@ -17,6 +17,7 @@ enum Statuses {
   Paid = "Paid",
   Processed = "Processed",
   InProgress = "In Progress",
+  Suspended = "Suspended",
 }
 
 const AppTag = ({ label, style }: TagProps) => {
@@ -27,6 +28,7 @@ const AppTag = ({ label, style }: TagProps) => {
     [Statuses.Failed]: "#F5C9C9",
     [Statuses.Active]: "#D0FED5",
     [Statuses.Inactive]: "#F5C9C9",
+    [Statuses.Suspended]: "#F5C9C9",
     [Statuses.Declined]: "#F5C9C9",
     [Statuses.Paid]: "#D0FED5",
     [Statuses.Processed]: "#D0FED5",
@@ -38,6 +40,7 @@ const AppTag = ({ label, style }: TagProps) => {
     [Statuses.Completed]: "#047168",
     [Statuses.Failed]: "#aa1e38",
     [Statuses.Active]: "#047168",
+    [Statuses.Suspended]: "#aa1e38",
     [Statuses.Inactive]: "#aa1e38",
     [Statuses.Declined]: "#aa1e38",
     [Statuses.Paid]: "#047168",
@@ -56,7 +59,7 @@ const AppTag = ({ label, style }: TagProps) => {
       variant="solid"
       color={color}
       background={background}
-      minW="fit-content"
+      maxW="fit-content"
     >
       <TagLabel py={".6rem"} px="1rem" fontSize={"1.3rem"} whiteSpace="nowrap">
         {label}

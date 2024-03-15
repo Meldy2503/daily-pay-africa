@@ -1,77 +1,83 @@
 "use client";
 
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Modal, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
 import DataTable from "react-data-table-component";
-import { getAgentColumns } from "./table-column";
+import { GetUserColumns } from "./table-column";
 import { customStyles } from "@/utils/custom-table-styles";
 import SearchBar from "../search-input";
-import CreateAgentModal from "./create-agent-modal";
+import { Button } from "../button";
+import CreateUserModal from "./create-user-modal";
+import EditUserModal from "./edit-user-modal";
 
-const AgentTable = () => {
+const UsersTable = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   let data = [
     {
       date: "25-5-2021",
       status: "Active",
       name: "John Doe",
-      amount: 5000,
-      age: "14 years",
+      email: 'john@gmail.com',
+      role: "manager",
       phone: "08012345678",
     },
     {
       date: "25-5-2021",
       status: "Inactive",
       name: "John Doe",
-      amount: 5000,
-      age: "14 years",
+      email: 'john@gmail.com',
+      role: "staff",
       phone: "08012345678",
     },
     {
       date: "25-5-2021",
       status: "Pending",
       name: "John Mark",
-      amount: 5000,
-      age: "14 years",
+      email: 'john@gmail.com',
+      role: "manager",
       phone: "08012345678",
     },
     {
       date: "25-5-2021",
       status: "Active",
       name: "John Doe",
-      amount: 5000,
-      age: "14 years",
+      email: 'john@gmail.com',
+      role: "manager",
       phone: "08012345678",
     },
   ];
 
-  const columns = getAgentColumns();
+  const columns = GetUserColumns({
+    onOpen,
+  });
 
   return (
     <Box
       bg="typography.white"
       borderRadius="1rem"
-      my="3rem"
-      borderWidth={{ base: "0", lg: "1.5px" }}
+      borderWidth="1.5px"
       borderColor={"typography.mediumWhite"}
       shadow={"sm"}
       p="3rem 2rem 4rem 2rem"
     >
+   
+
+      <Text fontWeight={"600"} mb="4rem" mt='1rem'>
+      Users
+      </Text>
       <Flex
         justify={"space-between"}
-        pb="3rem"
+        pb="4rem"
         gap="3rem"
         align={{ base: "flex-start", sm: "center" }}
-        flexWrap={"wrap"}
-        direction={{ base: "column", sm: "row" }}
       >
-        <Text fontWeight={"600"}>Agents</Text>
-        <Flex gap="2rem" direction={{ base: "column", sm: "row" }}>
-          <SearchBar />
-        
-          <CreateAgentModal/>
-        </Flex>
+        <SearchBar />
+        <CreateUserModal />
       </Flex>
+
+      
       <Box
-        borderWidth={{ base: "0", lg: "1.5px" }}
+        borderWidth="1.5px"
         borderColor={"typography.mediumWhite"}
         shadow={"sm"}
         bg="typography.white"
@@ -79,8 +85,14 @@ const AgentTable = () => {
       >
         <DataTable data={data} columns={columns} customStyles={customStyles} />
       </Box>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered size={"6xl"}>
+      <ModalOverlay />
+      <EditUserModal  onClose={onClose}/>
+
+      </Modal>
+
     </Box>
   );
 };
 
-export default AgentTable;
+export default UsersTable;

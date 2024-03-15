@@ -1,18 +1,18 @@
-'use client';
-
+"use client";
 
 import { TableColumn } from "react-data-table-component";
 import ActionsMenu from "@/components/action-menu";
 import { configOptions } from "@/services/config";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Switch, Text } from "@chakra-ui/react";
 import { NextRouter } from "next/router";
 import { Dispatch } from "react";
-import { AppTag } from "../tags";
+import { AppTag } from "../../tags";
+import AgentConfirmationModal from "../confirmation-modal";
 import { useRouter } from "next/navigation";
 
-export const GetCustomerColumns = () => {
-  const router = useRouter();
 
+export const GetAgentColumns = () => {
+  const router = useRouter();
 
   const columns: TableColumn<any>[] = [
     {
@@ -27,10 +27,9 @@ export const GetCustomerColumns = () => {
       sortable: true,
       cell: (row) => <Box>{row.name}</Box>,
     },
-  
     {
-      name: "Agent",
-      selector: (row) => row?.agent,
+      name: "Age",
+      selector: (row) => row?.age,
       sortable: true,
     },
     {
@@ -40,6 +39,12 @@ export const GetCustomerColumns = () => {
       cell: (row) => <Text variant="label">{row.phone}</Text>,
     },
     {
+      name: "Total Customers",
+      selector: (row) => row.amount,
+      cell: (row) => <Text>{row?.amount}</Text>,
+      sortable: true,
+    },
+    {
       name: "Status",
       cell: (row) => <AppTag label={row.status} />,
       maxWidth: "13rem",
@@ -47,22 +52,22 @@ export const GetCustomerColumns = () => {
     {
       name: "Actions",
       cell: (row) => (
-        <ActionsMenu
-          actions={[
-            {
-              label: "View",
-              cta: () => {
-                router.push(`/dashboard/customers/1`);
-
+        <>
+          <ActionsMenu
+            actions={[
+              {
+                label: "View",
+                cta: () => {
+                  router.push(`/dashboard/agents/summary/1`);
+                  // router.push(`/dashboard/agents/${row.id}`)
+                },
               },
-            },
-         
-            {
-              label: "Suspend",
-              cta: () => {},
-            },
-          ]}
-        />
+             
+            ]}
+          />
+
+          <AgentConfirmationModal />
+        </>
       ),
       center: true,
       maxWidth: "12rem",

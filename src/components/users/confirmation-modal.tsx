@@ -22,7 +22,7 @@ import InputField from "../input-field";
 import ApproveIcon from "@/assets/icons/approve";
 import DeclineIcon from "@/assets/icons/decline";
 
-const AgentConfirmationModal = () => {
+const UserConfirmationModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -56,9 +56,9 @@ const AgentConfirmationModal = () => {
                 //     : "typography.red"
                 // }
               >
-                  Are you sure you want to activate this agent?
+                  Are you sure you want to activate this user?
                 {/* {selectedOption === "Approve"
-                  ? "Are you sure you want to activate this agent?"
+                  ? "Are you sure you want to activate this useruser?"
                   : "Are you sure you want to suspend this agent?"} */}
               </Text>
               <Flex gap="1.5rem" mt="4rem" direction={'column'}>
@@ -82,4 +82,4 @@ const AgentConfirmationModal = () => {
   );
 };
 
-export default AgentConfirmationModal;
+export default UserConfirmationModal;

@@ -3,7 +3,7 @@ import Provider from "./chakra-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Daily Pay Africa",
+  title: "DailyPayAfrica",
   description: "Africa's Leading Digitized Thrift Platform",
 };
 

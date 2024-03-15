@@ -10,7 +10,7 @@ import {
   Flex,
   Icon,
   IconButton,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai";
 import { MdMenu } from "react-icons/md";
@@ -50,7 +50,7 @@ const Layout = ({ children }: LayoutProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex minH="100vh" pr={{ base: "unset" }} >
+    <Flex minH="100vh" pr={{ base: "unset" }}>
       <Box display={{ base: "none", lg: "flex" }}>
         <Sidebar />
       </Box>
@@ -71,8 +71,8 @@ const Layout = ({ children }: LayoutProps) => {
           top="0px"
           zIndex={"100"}
           bg="typography.white"
-           py="1.5rem"
-           px= "2rem"
+          py="1.5rem"
+          px={{ base: "1rem", lg: "2rem" }}
           borderWidth={{ base: "0", lg: "1px" }}
           borderColor={"typography.mediumWhite"}
         >
@@ -87,7 +87,7 @@ const Layout = ({ children }: LayoutProps) => {
           </Box>
           <Header />
         </Flex>
-        <Box px='2rem'>{children}</Box>
+        <Box px={{ base: "1rem", lg: "2rem" }}>{children}</Box>
       </Flex>
       <MenuDrawer isOpen={isOpen} onClose={onClose} />
     </Flex>

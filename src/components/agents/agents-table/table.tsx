@@ -1,20 +1,28 @@
 "use client";
 
-import { Box, Flex, Text } from "@chakra-ui/react";
-import DataTable from "react-data-table-component";
-import { getDashboardColumns } from "./table-column";
 import { customStyles } from "@/utils/custom-table-styles";
-import SearchBar from "../search-input";
-import { Button } from "../button";
-import DashboardModal from "./add-modal";
+import {
+  Box,
+  Flex,
+  Modal,
+  ModalOverlay,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
+import DataTable from "react-data-table-component";
+import SearchBar from "../../search-input";
+import CreateAgentModal from "../create-agent-modal";
+import { GetAgentColumns } from "./table-column";
 
-const DashboardTable = () => {
+const AgentTable = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   let data = [
     {
       date: "25-5-2021",
       status: "Active",
       name: "John Doe",
-      amount: 5000,
+      amount: 50,
       age: "14 years",
       phone: "08012345678",
     },
@@ -22,7 +30,7 @@ const DashboardTable = () => {
       date: "25-5-2021",
       status: "Inactive",
       name: "John Doe",
-      amount: 5000,
+      amount: 30,
       age: "14 years",
       phone: "08012345678",
     },
@@ -30,7 +38,7 @@ const DashboardTable = () => {
       date: "25-5-2021",
       status: "Pending",
       name: "John Mark",
-      amount: 5000,
+      amount: 200,
       age: "14 years",
       phone: "08012345678",
     },
@@ -38,41 +46,39 @@ const DashboardTable = () => {
       date: "25-5-2021",
       status: "Active",
       name: "John Doe",
-      amount: 5000,
+      amount: 145,
       age: "14 years",
       phone: "08012345678",
     },
   ];
 
-  const columns = getDashboardColumns();
+  const columns = GetAgentColumns();
 
   return (
     <Box
       bg="typography.white"
       borderRadius="1rem"
-      my="3rem"
-      borderWidth={{ base: "0", lg: "1.5px" }}
+      mt="5rem"
+      mb="3rem"
+      borderWidth="1.5px"
       borderColor={"typography.mediumWhite"}
       shadow={"sm"}
       p="3rem 2rem 4rem 2rem"
     >
+      <Text fontWeight={"600"} mb="4rem" mt='1rem'>
+        Agents
+      </Text>
       <Flex
         justify={"space-between"}
-        pb="3rem"
+        pb="4rem"
         gap="3rem"
         align={{ base: "flex-start", sm: "center" }}
-        flexWrap={"wrap"}
-        direction={{ base: "column", sm: "row" }}
       >
-        <Text fontWeight={"600"}>Accounts</Text>
-        <Flex gap="2rem" direction={{ base: "column", sm: "row" }}>
-          <SearchBar />
-        
-          <DashboardModal/>
-        </Flex>
+        <SearchBar />
+        <CreateAgentModal />
       </Flex>
       <Box
-        borderWidth={{ base: "0", lg: "1.5px" }}
+        borderWidth="1.5px"
         borderColor={"typography.mediumWhite"}
         shadow={"sm"}
         bg="typography.white"
@@ -84,4 +90,4 @@ const DashboardTable = () => {
   );
 };
 
-export default DashboardTable;
+export default AgentTable;

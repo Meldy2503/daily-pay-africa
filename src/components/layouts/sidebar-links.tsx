@@ -9,9 +9,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { LinkProps } from "./links";
+import { usePathname } from "next/navigation";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { usePathname, useRouter } from "next/navigation";
+import { LinkProps } from "./links";
 
 interface NavProps extends LinkProps {
   subLink?: boolean;
@@ -25,10 +25,10 @@ const SidebarLinks = ({
   nestedLinks,
   closeMobileSidebar,
 }: NavProps) => {
-  const router = useRouter();
-  const currentRoute = usePathname();
-
   const { isOpen, onToggle } = useDisclosure();
+  const currentRoute = usePathname();
+  const activePath = currentRoute.split("/")[2];
+  const activeNestedPath = currentRoute.split("/")[3];
 
   const linkStyle = {
     transition: ".2s ease",
@@ -41,7 +41,7 @@ const SidebarLinks = ({
     paddingBottom: "1.2rem",
     cursor: "pointer",
   };
-  
+
   return (
     <Stack spacing={4}>
       {path ? (
@@ -56,19 +56,26 @@ const SidebarLinks = ({
             style={{ ...linkStyle }}
             pl="1rem"
             bg={
-              currentRoute === path || currentRoute.includes(label)
+              currentRoute === path || path.includes(activePath)
                 ? "typography.lighterGreen"
                 : "none"
             }
-            color={
-              currentRoute === path || currentRoute.includes(label)
-                ? "typography.darkGreen"
-                : "none"
-            }
-            _hover={{ background: "typography.lighterGreen", color: "typography.darkGreen" }}
+            color={"typography.darkGreen"}
+            _hover={{
+              background: "typography.lighterGreen",
+              color: "typography.darkGreen",
+            }}
           >
             <Flex gap="1rem" justify="center" align="center">
-              <Icon as={IconComponent} h="1.3rem" />
+              <Icon
+                as={IconComponent}
+                fontSize="1.7rem"
+                color={
+                  currentRoute === path || path.includes(activePath)
+                    ? "typography.lightGreen"
+                    : "typography.darkGreen"
+                }
+              />
               <Text variant="label" fontWeight="semiBold">
                 {label}
               </Text>
@@ -79,7 +86,10 @@ const SidebarLinks = ({
         //   with nested link
         <Flex
           align={"center"}
-          _hover={{ background: "typography.lighterGreen", color: "typography.darkGreen" }}
+          _hover={{
+            background: "typography.lighterGreen",
+            color: "typography.darkGreen",
+          }}
           borderRadius=".6rem"
           cursor="pointer"
           gap="3rem"
@@ -88,7 +98,10 @@ const SidebarLinks = ({
           onClick={nestedLinks && onToggle}
         >
           <Flex gap="1rem" align="center">
-            <Icon as={IconComponent} h="1.5rem" />
+            <Icon as={IconComponent}
+                fontSize="1.7rem"
+                
+                 />
             <Text variant="label" fontWeight="semiBold">
               {label}
             </Text>
@@ -122,17 +135,15 @@ const SidebarLinks = ({
                   pl={"1rem"}
                   bg={
                     currentRoute === link?.path ||
-                    currentRoute.includes(link?.label)
+                    link?.path?.includes(activeNestedPath)
                       ? "typography.lighterGreen"
                       : "none"
                   }
-                  color={
-                    currentRoute === link?.path ||
-                    currentRoute.includes(link?.label)
-                      ? "typography.darkGreen"
-                      : "none"
-                  }
-                  _hover={{ background: "typography.lighterGreen", color: "typography.darkGreen" }}
+                  color={"typography.darkGreen"}
+                  _hover={{
+                    background: "typography.lighterGreen",
+                    color: "typography.darkGreen",
+                  }}
                 >
                   <Flex gap="1rem" align="center">
                     <Text variant="label">{link.label}</Text>

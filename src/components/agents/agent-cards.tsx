@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
 import React from "react";
 import Icon1 from "../../assets/images/pink-icon.svg";
 import Icon2 from "../../assets/images/gold-icon.svg";
 import Icon3 from "../../assets/images/green-icon.svg";
-import Card from "../card";
+import SummaryCard from "../cards/summary-card";
 import { Flex } from "@chakra-ui/react";
 
 const AgentCards = () => {
   const data = [
-      {
-        title: "Total Agents",
-        subTitle: "Total no. of Agents",
-        value: 5000,
-        icon: Icon2,
-      },
+    {
+      title: "Total Agents",
+      subTitle: "Total no. of Agents",
+      value: 5000,
+      icon: Icon2,
+    },
     {
       title: "Active Agents",
       subTitle: "No. of active agents",
@@ -37,7 +37,7 @@ const AgentCards = () => {
     >
       {data.map((items, index) => {
         return (
-          <Card
+          <SummaryCard
             key={index}
             icon={items.icon}
             value={items.value}

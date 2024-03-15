@@ -4,7 +4,7 @@ import React from "react";
 import Icon1 from "../../assets/images/pink-icon.svg";
 import Icon2 from "../../assets/images/gold-icon.svg";
 import Icon3 from "../../assets/images/green-icon.svg";
-import Card from "../card";
+import SummaryCard from "../cards/summary-card";
 import { Flex } from "@chakra-ui/react";
 
 const CustomerCards = () => {
@@ -37,7 +37,7 @@ const CustomerCards = () => {
     >
       {data.map((items, index) => {
         return (
-          <Card
+          <SummaryCard
             key={index}
             icon={items.icon}
             value={items.value}

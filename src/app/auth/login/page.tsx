@@ -91,9 +91,9 @@ const Login = () => {
           justify={"center"}
           direction={"column"}
           gap="3rem"
-        >
+         >
           <Image src={LogoIcon} height={150} width={150} alt="daily pay logo" />
-          <Heading textAlign="center" variant="h4" fontWeight="700" mb="3rem">
+          <Heading textAlign="center" fontSize={'2rem'} fontWeight="700" mb="3rem">
             Login to your Account
           </Heading>
         </Flex>
@@ -120,7 +120,7 @@ const Login = () => {
           <Box
             textAlign={"right"}
             fontWeight={"500"}
-            fontSize="1.6rem"
+            fontSize="1.5rem"
             mt=".6rem"
             mb="3rem"
             color={"typography.lightGreen"}

@@ -61,17 +61,17 @@ a {
 
 .modalbtn {
   color: #fff;
-  border: 2px solid #06880f;
+  border: 2px solid #079011;
   background-image: -webkit-linear-gradient(
     30deg,
-    #06880f 15.03%,
-    #06880f 34.34%,
+    #079011 15.03%,
+    #079011 34.34%,
     transparent 50%
   );
   background-image: linear-gradient(
     150.31deg,
-    #06880f 15.03%,
-    #06880f 35.34%,
+    #079011 15.03%,
+    #079011 35.34%,
     transparent 50%
   );
   background-size: 1200px;
@@ -82,7 +82,7 @@ a {
 }
 .modalbtn:hover {
   background-position: 100%;
-  color: #06880f;
+  color: #05740c;
 }
 
 
